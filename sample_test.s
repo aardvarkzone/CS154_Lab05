@@ -22,12 +22,15 @@ main:
     addi $t1, $t1, 10
 
 loop:
-    beq $t0, $t1, exit         # if ($t0 == 10) exit
+    beq $t0, $t1, exit         # if ($t0 == 10) exit 
 
     and $t2, $t2, $zero        # $t2 = 0
-    lw $t3, 0($t2)             # $t3 = mem[$t2]
-    addi $t3, $t3, 1           # $t3 += 1
-    sw $t3, 0($t2)             # mem[$t2] = $t3
+    lw $t3, 0($t2)             # $t3 = mem[$t2] = mem[0]
+    addi $t3, $t3, 1           # $t3 += 1 --> $t3 = 1
+    sw $t3, 0($t2)             # mem[$t2] = $t3 --> mem[0] = 1
+    #t2 source 
+    #t3 target 
+    #0 immd
 
     addi $t0, $t0, 1           # $t0 += 1
     beq $zero, $zero, loop     # goto loop
